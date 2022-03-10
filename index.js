@@ -11,7 +11,7 @@ const client = new Discord.Client({
         status: 'idle',
         afk: true,
         activities: [{
-            name: process.env.CUSTOMSTATUS,
+            name: 'STATUS HERE',
             type: 'LISTENING',
         }],
     },
@@ -35,14 +35,14 @@ client.on("ready", async () => {
                 guildId: channel.guild.id,
                 adapterCreator: channel.guild.voiceAdapterCreator
             });
-            const resource = createAudioResource(ytdl(`https://www.youtube.com/watch?v=${"gtRhZvlYfpg"}`), {
+            const resource = createAudioResource(ytdl(`https://www.youtube.com/watch?v=${"YOUTUBEVIDEOID"}`), {
                 inlineVolume: true
             });
             resource.volume.setVolume(1);
             const player = createAudioPlayer()
             VoiceConnection.subscribe(player);
-            console.log(chalk.green(`\n[MUSIC] ${chalk.red(`Now Playing - https://www.youtube.com/watch?v=${"gtRhZvlYfpg"}`)}`))
-            console.log(chalk.green(`[EVENT] ${chalk.red(`Sending Ready Event To Pterodactyl`)}`));
+            console.log(chalk.green(`\n[MUSIC] ${chalk.red(`Now Playing - https://www.youtube.com/watch?v=${"YOUTUBEVIDEOID"}`)}`))
+            console.log(chalk.green(`[EVENT] ${chalk.red(`Starting`)}`));
             console.log('done')
             player.play(resource);
             player.on("idle", () => {
@@ -62,4 +62,4 @@ client.on("ready", async () => {
 })
 
 //Log into the client
-client.login(process.env.TOKEN);
+client.login("token here");
